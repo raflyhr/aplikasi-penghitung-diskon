@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <!-- 1. Informasi dasar halaman -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Penghitung Diskon</title>
+
+  <!-- 2. CSS - Tampilan halaman -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f2f2f2;
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+
+    input {
+      padding: 8px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      width: 100%;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 3. HTML - Struktur isi halaman -->
+  <h2>Aplikasi Penghitung Diskon</h2>
+
+  <label for="price">Harga Awal (Rp):</label>
+  <input type="number" id="price" placeholder="Contoh: 100000">
+
+  <label for="discount">Diskon (%):</label>
+  <input type="number" id="discount" placeholder="Contoh: 20">
+
+  <button onclick="hitungDiskon()">Hitung Harga Setelah Diskon</button>
+
+  <div id="result"></div>
+
+  <!-- 4. JavaScript - Logika interaktif -->
+  <script>
+    function hitungDiskon() {
+      const price = parseFloat(document.getElementById("price").value);
+      const discount = parseFloat(document.getElementById("discount").value);
+
+      if (isNaN(price) || isNaN(discount)) {
+        document.getElementById("result").innerText = "Masukkan harga dan diskon yang valid!";
+        return;
+      }
+
+      const discountedPrice = price - (price * (discount / 100));
+      document.getElementById("result").innerText =
+        `Harga setelah diskon: Rp ${discountedPrice.toLocaleString('id-ID')}`;
+    }
+  </script>
+</body>
+</html>
